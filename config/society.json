@@ -1,0 +1,58 @@
+{
+  "society": {
+    "name": "Society Maintenance",
+    "building": "Building E",
+    "flatCount": 114,
+    "bufferPercent": 20
+  },
+  "fixedCosts": [
+    { "id": "electricity", "label": "Electricity Bill", "monthly": 100000, "active": true },
+    { "id": "housekeeping", "label": "Housekeeping Agency", "monthly": 50000, "active": true },
+    { "id": "security", "label": "Security Agency", "monthly": 60000, "active": true },
+    { "id": "lift", "label": "Lift AMC Charges", "monthly": 25000, "active": true },
+    { "id": "intercom", "label": "Intercom and CCTV AMC", "monthly": 1500, "active": true },
+    { "id": "generator", "label": "Generator Maintenance & AMC", "monthly": 2500, "active": true },
+    { "id": "fire", "label": "Fire System AMC", "monthly": 4000, "active": true },
+    { "id": "insurance", "label": "Building Insurance", "monthly": 4000, "active": true },
+    { "id": "manager", "label": "Society Manager", "monthly": 4000, "active": true },
+    { "id": "stationery", "label": "Stationery", "monthly": 2000, "active": true },
+    { "id": "misc", "label": "Misc Expenses", "monthly": 2000, "active": true }
+  ],
+  "variable": {
+    "constructionCostPerSqFt": 1000,
+    "funds": [
+      {
+        "id": "sinking",
+        "label": "Sinking Fund",
+        "annualPercent": 0.25,
+        "formulaNote": "(Total Usable Area × Construction Cost Per Sq.Ft. × 0.25%) ÷ 12"
+      },
+      {
+        "id": "repair",
+        "label": "Repair & Maintenance Fund",
+        "annualPercent": 0.75,
+        "formulaNote": "(Total Usable Area × Construction Cost Per Sq.Ft. × 0.75%) ÷ 12"
+      }
+    ]
+  },
+  "temporaryCharges": [
+    {
+      "id": "legal",
+      "label": "Legal",
+      "monthlyAmount": 500,
+      "startMonth": "2025-12",
+      "endMonth": "2026-09",
+      "totalTarget": 5000,
+      "active": true,
+      "note": "Dec 2025 – Sep 2026 (₹5,000 total)"
+    }
+  ],
+  "rounding": {
+    "fixedPerFlat": 100,
+    "finalMonthly": 1
+  },
+  "display": {
+    "currency": "INR",
+    "locale": "en-IN"
+  }
+}
