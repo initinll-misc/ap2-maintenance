@@ -1,0 +1,45 @@
+  <!-- 4. Temporary -->
+  <div class="card section-card section-card--temporary hoverable" id="temporary-section">
+    <div class="section-header section-header--temporary">
+      <div class="section-header__icon-wrap">
+        <i class="material-icons" aria-hidden="true">schedule</i>
+      </div>
+      <div class="section-header__text">
+        <h2 class="section-header__title">Temporary Charges</h2>
+        <p class="section-header__meta">Time-bound levies for selected month</p>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="table-wrap">
+        <table class="striped highlight cost-table">
+          <thead class="purple lighten-5">
+            <tr>
+              <th class="center-align col-num">#</th>
+              <th>Particulars</th>
+              <th class="right-align">Monthly</th>
+              <th class="right-align">Annually</th>
+            </tr>
+          </thead>
+          <tbody id="temporary-items"></tbody>
+        </table>
+      </div>
+      <div class="section-total section-total--temporary">
+        <div class="section-total__head">
+          <div class="section-total__icon-wrap">
+            <i class="material-icons" aria-hidden="true">currency_rupee</i>
+          </div>
+          <span class="section-total__label">Total Temporary</span>
+        </div>
+        <div class="section-total__amounts">
+          <div class="section-total__amount">
+            <span class="section-total__period">Monthly</span>
+            <strong id="temporary-total-monthly">—</strong>
+          </div>
+          <div class="section-total__amount">
+            <span class="section-total__period">Annually</span>
+            <strong id="temporary-total-annual">—</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

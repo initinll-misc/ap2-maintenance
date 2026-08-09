@@ -1,0 +1,50 @@
+  <!-- 1. Flat -->
+  <div class="card section-card section-card--flat hoverable">
+    <div class="section-header section-header--flat">
+      <div class="section-header__icon-wrap">
+        <i class="material-icons" aria-hidden="true">home</i>
+      </div>
+      <div class="section-header__text">
+        <h2 class="section-header__title">Flat — Area (Sq. Ft.)</h2>
+        <p class="section-header__meta">Enter carpet &amp; balcony to compute your share</p>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row flat-inputs">
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix blue-text text-lighten-1">straighten</i>
+          <input id="carpet" type="number" inputmode="decimal" value="668" min="0" step="any" class="validate" />
+          <label for="carpet" class="active">Carpet area (sq.ft)</label>
+          <span class="helper-text">As mentioned in ANNEXURE F</span>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix blue-text text-lighten-1">deck</i>
+          <input id="balcony" type="number" inputmode="decimal" value="124.43" min="0" step="any" class="validate" />
+          <label for="balcony" class="active">Balcony area (sq.ft)</label>
+          <span class="helper-text">As mentioned in ANNEXURE F</span>
+        </div>
+      </div>
+
+      <div class="area-highlight" aria-live="polite">
+        <div class="area-highlight__icon-wrap">
+          <i class="material-icons area-highlight__icon" aria-hidden="true">square_foot</i>
+        </div>
+        <div class="area-highlight__content center-align">
+          <p class="area-highlight__label">Total Usable Area</p>
+          <p class="area-highlight__value">
+            <span id="total-area">792.43</span>
+            <span class="area-highlight__unit">sq.ft</span>
+          </p>
+          <p class="area-highlight__formula grey-text text-darken-1">Carpet area + Balcony area</p>
+        </div>
+      </div>
+
+      <div class="row flat-inputs flat-inputs--billing">
+        <div class="input-field col s12">
+          <i class="material-icons prefix blue-text text-lighten-1">event</i>
+          <select id="billing-month"></select>
+          <label>Billing month</label>
+        </div>
+      </div>
+    </div>
+  </div>
