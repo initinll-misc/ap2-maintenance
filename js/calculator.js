@@ -148,6 +148,7 @@ function calculateMaintenance(config, carpet, balcony, billingMonth) {
 
   const subtotalMonthly = fixed.rounded + variable.total;
   const roundedSubtotal = roundTo(subtotalMonthly, config.rounding.finalMonthly);
+  const exactMonthly = subtotalMonthly + temporary.total;
   const grandMonthly = roundedSubtotal + temporary.total;
   const annual = calcAnnualProjection(fixed, variable, temporary);
 
@@ -157,6 +158,7 @@ function calculateMaintenance(config, carpet, balcony, billingMonth) {
     temporary,
     subtotalMonthly,
     roundedSubtotal,
+    exactMonthly,
     grandMonthly,
     annual,
     billingMonth,

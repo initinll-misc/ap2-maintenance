@@ -28,15 +28,6 @@ function formatCurrency(amount, locale = 'en-IN', currency = 'INR') {
   }).format(amount);
 }
 
-function formatCurrencyWhole(amount, locale = 'en-IN', currency = 'INR') {
-  return new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency,
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
-
 function formatMonthLabel(monthStr) {
   const [year, month] = monthStr.split('-');
   const date = new Date(Number(year), Number(month) - 1, 1);
@@ -149,17 +140,13 @@ function renderFixedSection(result) {
         formatCurrency(fixed.bufferAmount * 12),
         2
       ),
-      calcRowHtml(
-        'Per Flat (with buffer)',
-        formatCurrency(fixed.withBuffer),
-        formatCurrency(fixed.withBuffer * 12),
-        3
-      ),
     ].join('');
   }
 
-  setText('fixed-rounded-monthly', formatCurrencyWhole(fixed.rounded));
-  setText('fixed-rounded-annual', formatCurrencyWhole(fixed.rounded * 12));
+  setText('fixed-with-buffer-monthly', formatCurrency(fixed.withBuffer));
+  setText('fixed-with-buffer-annual', formatCurrency(fixed.withBuffer * 12));
+  setText('fixed-rounded-monthly', formatCurrency(fixed.rounded));
+  setText('fixed-rounded-annual', formatCurrency(fixed.rounded * 12));
   setText('fixed-buffer-pct', fixed.bufferPercent);
 }
 
@@ -168,7 +155,7 @@ function renderVariableSection(result) {
   const area = variable.area.toFixed(2);
 
   setText('total-area', area);
-  setText('construction-rate', formatCurrencyWhole(variable.constructionCostPerSqFt));
+  setText('construction-rate', formatCurrency(variable.constructionCostPerSqFt));
 
   const tbody = document.getElementById('variable-items');
   if (tbody) {
@@ -177,8 +164,12 @@ function renderVariableSection(result) {
       .join('');
   }
 
-  setText('variable-total-monthly', formatCurrency(variable.total));
-  setText('variable-total-annual', formatCurrency(variable.totalAnnual));
+  const variableTotalMonthly = formatCurrency(variable.total);
+  const variableTotalAnnual = formatCurrency(variable.totalAnnual);
+  setText('variable-table-total-monthly', variableTotalMonthly);
+  setText('variable-table-total-annual', variableTotalAnnual);
+  setText('variable-total-monthly', variableTotalMonthly);
+  setText('variable-total-annual', variableTotalAnnual);
 }
 
 function renderTemporarySection(result) {
@@ -213,19 +204,23 @@ function renderTemporarySection(result) {
 
 function renderTotalSection(result) {
   const { fixed, variable, temporary, annual } = result;
-  const grandMonthly = formatCurrencyWhole(result.grandMonthly);
-  const grandAnnual = formatCurrency(annual.grandAnnual);
+  const exactMonthly = formatCurrency(result.exactMonthly);
+  const exactAnnual = formatCurrency(annual.grandAnnual);
+  const roundedMonthly = formatCurrency(result.grandMonthly);
+  const roundedAnnual = formatCurrency(result.grandMonthly * 12);
 
-  setText('summary-fixed-monthly', formatCurrencyWhole(fixed.rounded));
-  setText('summary-fixed-annual', formatCurrencyWhole(fixed.rounded * 12));
+  setText('summary-fixed-monthly', formatCurrency(fixed.rounded));
+  setText('summary-fixed-annual', formatCurrency(fixed.rounded * 12));
   setText('summary-variable-monthly', formatCurrency(variable.total));
   setText('summary-variable-annual', formatCurrency(variable.totalAnnual));
   setText('summary-temporary-monthly', formatCurrency(temporary.total));
   setText('summary-temporary-annual', formatCurrency(annual.temporaryAnnual));
-  setText('summary-grand-monthly', grandMonthly);
-  setText('summary-grand-annual', grandAnnual);
-  setText('summary-grand-monthly-foot', grandMonthly);
-  setText('summary-grand-annual-foot', grandAnnual);
+  setText('summary-grand-monthly', roundedMonthly);
+  setText('summary-grand-annual', roundedAnnual);
+  setText('summary-grand-monthly-row', exactMonthly);
+  setText('summary-grand-annual-row', exactAnnual);
+  setText('summary-grand-monthly-foot', roundedMonthly);
+  setText('summary-grand-annual-foot', roundedAnnual);
   setText('billing-month-label', formatMonthLabel(result.billingMonth));
 
   const tempRow = document.getElementById('summary-temporary-row');
