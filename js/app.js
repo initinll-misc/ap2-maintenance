@@ -207,7 +207,7 @@ function renderTotalSection(result) {
   const exactMonthly = formatCurrency(result.exactMonthly);
   const exactAnnual = formatCurrency(annual.grandAnnual);
   const roundedMonthly = formatCurrency(result.grandMonthly);
-  const roundedAnnual = formatCurrency(result.grandMonthly * 12);
+  const roundedAnnual = formatCurrency(result.grandAnnual);
 
   setText('summary-fixed-monthly', formatCurrency(fixed.rounded));
   setText('summary-fixed-annual', formatCurrency(fixed.rounded * 12));

@@ -147,19 +147,19 @@ function calculateMaintenance(config, carpet, balcony, billingMonth) {
   const temporary = calcTemporary(config, billingMonth);
 
   const subtotalMonthly = fixed.rounded + variable.total;
-  const roundedSubtotal = roundTo(subtotalMonthly, config.rounding.finalMonthly);
   const exactMonthly = subtotalMonthly + temporary.total;
-  const grandMonthly = roundedSubtotal + temporary.total;
   const annual = calcAnnualProjection(fixed, variable, temporary);
+  const grandMonthly = roundTo(exactMonthly, config.rounding.finalMonthly);
+  const grandAnnual = roundTo(annual.grandAnnual, config.rounding.finalMonthly);
 
   return {
     fixed,
     variable,
     temporary,
     subtotalMonthly,
-    roundedSubtotal,
     exactMonthly,
     grandMonthly,
+    grandAnnual,
     annual,
     billingMonth,
   };

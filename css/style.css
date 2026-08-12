@@ -596,12 +596,29 @@ table.cost-table tr.row-formula td {
 }
 
 table.cost-table tr.row-building-total td {
-  background: #e3f2fd !important;
   font-size: 0.9rem;
   font-weight: 700;
   padding: 12px 10px !important;
+}
+
+.section-card--fixed table.cost-table tr.row-building-total td {
+  background: #e3f2fd !important;
   color: #0d47a1;
   border-top: 2px solid #90caf9;
+}
+
+.section-card--fixed table.cost-table tr.row-building-total td.right-align {
+  color: #0d47a1;
+}
+
+.section-card--variable table.cost-table tr.row-building-total td {
+  background: #e8f5e9 !important;
+  color: #1b5e20;
+  border-top: 2px solid #a5d6a7;
+}
+
+.section-card--variable table.cost-table tr.row-building-total td.right-align {
+  color: #1b5e20;
 }
 
 table.cost-table tr.grand-row td {
