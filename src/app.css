@@ -1,0 +1,30 @@
+@import './lib/styles/tokens.css';
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(*) {
+    transition: none !important;
+  }
+}
+
+/* Materialize billing-month dropdown — body-mounted, full trigger width, scrollable on mobile */
+:global(.dropdown-content.select-dropdown) {
+  z-index: 1004 !important;
+  max-height: min(70vh, 400px) !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+}
